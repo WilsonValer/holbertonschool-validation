@@ -1,5 +1,4 @@
-POST_TITLE = Who are we
-POST_NAME = who-are-we
+#	implement the Makefile to create rules
 build:	## create a rule to build the webpage and create the file /dist
 	@hugo
 clean:	## create a rule `clean` to clenup all directory /dist
