@@ -11,7 +11,9 @@ post:	## Create a new blog post using enviroment variable
 	@sed -i 's/draft:.*/draft: "false"/' content/posts/$(POST_NAME).md
 
 help:	## command help
-	@echo "build : create a rule to build the webpage and create the file /dist"
-	@echo "clean: create a rule clean to clenup all directory /dist"
-	@echo "post: Create a new blog post whose filename"
-	@echo "help: command to help about the usage the proyect"
+	@echo "Using: make <command>"
+#	@echo "build : create a rule to build the webpage and create the file /dist"
+#	@echo "clean: create a rule clean to clenup all directory /dist"
+#	@echo "post: Create a new blog post whose filename"
+#	@echo "help: command to help about the usage the proyect"
+	@cat Makefile | grep "^\w*:.*##.*" | sed 's/## //'
