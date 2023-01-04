@@ -1,8 +1,9 @@
-POST_TITLE = Who are we
-POST_NAME = who-are-we
+# implement the Makefile to create rules
 build:
-	hugo
+	@hugo
 clean:
-	rm -rf dist/*
+	@rm -rf dist/*
 post:
-	hugo new posts/$(POST_NAME)
+	@hugo new posts/$(POST_NAME).md
+	@sed -i 's/title:.*/title: $(POST_TITLE)/' content/posts/$(POST_NAME).md
+	@sed -i -r 's/draft:.*/draft:"false"/' content/posts/$(POST_NAME).md
