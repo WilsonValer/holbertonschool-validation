@@ -31,7 +31,7 @@ jobs:
         run: make lint -C module3_task2/
       # executing the rules make build
       - name: build the aplication
-        run: make build -C module3_task2/i
+        run: make build -C module3_task2/
 
       # implement a zip file with the content website
       - name: run the  package to create a file zip
