@@ -4,7 +4,8 @@ name: module3_task2
 on:
   # Triggers the workflow on push or once per day at midnight
   push:
-    paths: [master]
+    paths: 
+    - 'module3_task2/**'
   schedule:
     - cron: "30 22 * * 0-6"
 # Jobs has two steps, clone the repo and execute 'make help'
