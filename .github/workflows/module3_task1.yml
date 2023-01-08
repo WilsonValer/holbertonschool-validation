@@ -7,7 +7,7 @@ on:
   # Triggers the workflow on push or once per day at midnight
   push:
     paths:
-      - 'module3_task0/**'
+      - 'module3_task1/**'
   schedule:
     - cron: '0 0 * * *'
 
@@ -16,7 +16,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: Ubuntu-18.04
 
     # Steps represent sequence of tasks that will be executed as par of the job
     steps:
@@ -26,7 +26,5 @@ jobs:
         uses: actions/checkout@v3
 
       # Go to the right folder and execute 'make help'
-      - name: Execute the make help command
-        run: |
-          cd module3_task0/
-          make build
+      - name: Execute the make build command
+        run: cd module3_task1 && make build
