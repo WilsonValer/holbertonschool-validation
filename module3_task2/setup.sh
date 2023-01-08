@@ -9,4 +9,3 @@ apt-get install zip
 npm install -g markdownlint-cli
 
 # Generate a Go-Hugo website
-make build
