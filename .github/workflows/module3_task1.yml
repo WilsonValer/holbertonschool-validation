@@ -24,7 +24,9 @@ jobs:
       # so your job can access it
       - name: Clone the repository
         uses: actions/checkout@v3
-
+      # executing the script setup.sh
+      - name: executing the script setup.sh
+        run: cd module3_task1 && ./setup.sh
       # Go to the right folder and execute 'make help'
       - name: Execute the make build command
         run: cd module3_task1 && make build
