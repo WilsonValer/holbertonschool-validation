@@ -1,19 +1,11 @@
 #!/bin/bash
 
-## Production Instructions
+# Install appropriate version of hugo to be run in docker container 'ubuntu 18.04'
+apt-get update && apt-get install -y make wget
+wget https://github.com/gohugoio/hugo/releases/download/v0.109.0/hugo_extended_0.109.0_Linux-64bit.tar.gz
+tar -xvf hugo_extended_0.109.0_Linux-64bit.tar.gz hugo
+mv hugo /usr/local/bin/
+rm hugo_extended_0.109.0_Linux-64bit.tar.gz
 
-##  The production website is hosted in  an Ubuntu 18.04 Docker container
-##  The applications "GoHugo" and "Make" are installed with
-apt-get update
-apt-get upgrade
-apt-get install -y wget
-apt-get install -y hugo make
-##  When running the command
-wget https://github.com/gohugoio/hugo/releases/download/v0.84.0/hugo_extended_0.84.0_Linux-64bit.deb
-dpkg -i hugo_extended_0.84.0_Linux-64bit.deb
+# Generate a Go-Hugo website
 make build
-## there is a bunch of errors which end with the following lines:
-
-## Error: Error building site: logged 15 error(s)
-## Makefile:2: recipe for target 'build' failed
-## make: *** [build] Error 255
