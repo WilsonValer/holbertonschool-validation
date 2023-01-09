@@ -8,6 +8,8 @@ on:
   push:
     # branches: [master]
     branches: [master]
+    tags:
+      - 'v*.*.*'
   schedule:
     - cron: '0 0 * * *'
 
