@@ -1,3 +1,5 @@
+[![module3_task2](https://github.com/WilsonValer/holbertonschool-validation/actions/workflows/module3_task2.yml/badge.svg)](https://github.com/WilsonValer/holbertonschool-validation/actions/workflows/module3_task2.yml)
+
 # how to install GO.
 * sudo apt update -> upgrade
 * wget https://go.dev/dl/go1.19.4.linux-amd64.tar.gz
