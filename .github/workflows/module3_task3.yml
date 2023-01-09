@@ -55,7 +55,9 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Archive awesome-website.zip as artifact
-          path: module3_task3/awesome-website.zip
+          path: |
+            module3_task3/awesome-website.zip
+            module3_task3/DEPLOY.md
       # create a Release
       - name: Release
         uses: softprops/action-gh-release@v1
