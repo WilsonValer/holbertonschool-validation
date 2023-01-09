@@ -1,4 +1,7 @@
-# In this secction are writing some requerement for webpage in hugo
+# Awesome Inc. website Docs
+
+* Welcome to our site, please follow the next information
+  in order to have a working website.
 
 ## how to install hugo
 
@@ -23,3 +26,9 @@
 * clean
 * post
 * help
+
+## Build Workflow
+
+* The workflow is executed into Ubuntu 18.04 environment
+* Required tools are installed prior to any make target,
+  by executing the script setup.sh
