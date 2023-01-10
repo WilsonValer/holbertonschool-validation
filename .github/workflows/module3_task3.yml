@@ -9,7 +9,7 @@ on:
     # branches: [master]
     branches: [master]
     tags:
-      - 'v*.*.*'
+      - '1.0.0'
   schedule:
     - cron: '0 0 * * *'
 
