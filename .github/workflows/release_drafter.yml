@@ -14,7 +14,7 @@ on:
     #  pull_request_target event is required for
     # autolabeler to support PRs from forks
     # pull_request_target:
-    #   types: [opened, reopened, synchronize]
+    # and   types: [opened, reopened, synchronize]
 
 permissions:
   contents: read
@@ -43,4 +43,4 @@ jobs:
           publish: true
         #   disable-autolabeler: true
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
