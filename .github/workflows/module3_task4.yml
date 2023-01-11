@@ -1,7 +1,7 @@
 ---
 # Earlier Feedback with Continuous Delivery
 
-name: module3_task3
+name: module3_task4
 
 # Controls when the workflow will run
 on:
@@ -13,6 +13,9 @@ on:
       - 'v*.*.*'
   schedule:
     - cron: '0 0 * * *'
+
+  pull_request:
+    types: [opened, reopened, edited, ready_for_review]
 
 # Jobs has five steps
 jobs:
@@ -31,42 +34,41 @@ jobs:
       # Ensure all the required tools are installed prior to any make target
       - name: Execute the script setup.sh
         run: |
-          cd module3_task3/
+          cd module3_task4/
           ./setup.sh
       # Check syntax on markdown files
       - name: Run markdownlint on markdown files
-        run: make lint -C module3_task3/
+        run: make lint -C module3_task4/
 
       # Go to the right folder and execute 'make build'
       - name: Build the application
-        run: make build -C module3_task3/
+        run: make build -C module3_task4/
 
       # Produce a zip file containing the dist folder
       - name: Archive the dist folder inside a zip file
-        run: make package -C module3_task3/
+        run: make package -C module3_task4/
 
       # Additional steps form past module
       - name: Run additional make rules
         run: |
-          make unit-tests -C module3_task3/
-          make integration-tests -C module3_task3/
-          make validate -C module3_task3/
+          make unit-tests -C module3_task4/
+          make integration-tests -C module3_task4/
+          make validate -C module3_task4/
       # Archive the zip file as artifact
       - name: Archive code coverage results
         uses: actions/upload-artifact@v3
         with:
           name: Archive awesome-website.zip as artifact
           path: |
-            module3_task3/awesome-website.zip
-            module3_task3/DEPLOY.md
+            module3_task4/awesome-website.zip
+            module3_task4/DEPLOY.md
       # create a Release
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          # tag_name: 1.0.0
           files: |
-            module3_task3/awesome-website.zip
-            module3_task3/DEPLOY.md
-          body_path: module3_task3/DEPLOY.md
+            module3_task4/awesome-website.zip
+            module3_task4/DEPLOY.md
+            #    body_path: module3_task3/DEPLOY.md
 ...
