@@ -4,7 +4,7 @@ build: ## Generate the website from markdown and config files in the 'dist/' fol
 
 clean: ## Cleanup the content of the 'dist/' folder
 	@rm -Rf dist/*
-	@rouch awesome-api
+	@touch awesome-api
 
 post: ## Create a new blog post using POST_TITLE and POST_NAME env variables
 	@rm -Rf content/posts/$(POST_NAME).md
