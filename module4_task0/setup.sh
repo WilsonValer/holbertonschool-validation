@@ -8,4 +8,9 @@ sudo dpkg -i hugo_extended_0.84.0_Linux-64bit.deb
 apt-get install zip
 npm install -g markdownlint-cli
 
-# Generate a Go-Hugo website
+# Uninstall go
+sudo apt-get remove golang-go
+rm -rf /usr/local/go
+
+# Delete dist folder
+rm -rf dist/
