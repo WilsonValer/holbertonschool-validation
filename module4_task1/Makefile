@@ -1,6 +1,6 @@
 # Implement the next steps for the actual Go-Hugo website's source code
 build: ## Generate the website from markdown and config files in the 'dist/' folder
-#	@hugo
+	@hugo
 	@touch awesome-api
 clean: ## Cleanup the content of the 'dist/' folder
 	@rm -Rf dist/*
