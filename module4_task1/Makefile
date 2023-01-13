@@ -15,7 +15,7 @@ post: ## Create a new blog post using POST_TITLE and POST_NAME env variables
 	@sed -i 's/draft:.*/draft: "false"/' content/posts/$(POST_NAME).md
 
 package: ## Produce a zip file containing the 'dist/' folder
-	@hugo
+#	@hugo
 	@zip -r awesome-website.zip dist/
 
 lint: ## Check markdown files for any syntax mistake
