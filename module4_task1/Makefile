@@ -12,6 +12,7 @@ post: ## Create a new blog post using POST_TITLE and POST_NAME env variables
 	@sed -i 's/draft:.*/draft: "false"/' content/posts/$(POST_NAME).md
 
 package: ## Produce a zip file containing the 'dist/' folder
+	@hugo
 	@zip -r awesome-website.zip dist/
 
 build-docker: ## Define a docekr image
