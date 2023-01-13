@@ -5,8 +5,6 @@ build: ## Generate the website from markdown and config files in the 'dist/' fol
 clean: ## Cleanup the content of the 'dist/' folder
 	@rm -Rf dist/*
 
-build-docker: ## build docker image
-	@docker build -t awesome:build -f  ./build/Dockerfile .
 post: ## Create a new blog post using POST_TITLE and POST_NAME env variables
 	@rm -Rf content/posts/$(POST_NAME).md
 	@hugo new posts/$(POST_NAME).md
@@ -14,8 +12,10 @@ post: ## Create a new blog post using POST_TITLE and POST_NAME env variables
 	@sed -i 's/draft:.*/draft: "false"/' content/posts/$(POST_NAME).md
 
 package: ## Produce a zip file containing the 'dist/' folder
-	@hugo
 	@zip -r awesome-website.zip dist/
+
+build-docker: ## build docker image
+	@docker build -t awesome:build -f  ./build/Dockerfile .
 
 lint: ## Check markdown files for any syntax mistake
 	@markdownlint README.md DEPLOY.md
