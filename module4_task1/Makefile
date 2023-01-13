@@ -6,7 +6,7 @@ clean: ## Cleanup the content of the 'dist/' folder
 	@rm -Rf dist/*
 
 build-docker: ## build docker image
-	@docker build -t awesome:build -f build/Dockerfile
+	@docker build -t awesome:build -f  ~/build/Dockerfile .
 
 post: ## Create a new blog post using POST_TITLE and POST_NAME env variables
 	@rm -Rf content/posts/$(POST_NAME).md
