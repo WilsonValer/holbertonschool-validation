@@ -43,7 +43,7 @@ jobs:
 
       # build docker file
       - name: # build dokcer file
-        run: |
+        run: | # execute build docker
             cd module4_task1
             make build-docker
 
