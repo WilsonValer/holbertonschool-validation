@@ -46,6 +46,7 @@ jobs:
         run: | # execute build docker
             cd module4_task1
             make build-docker
+            docker run -d -p8080 awesome:build
 
       # Go to the right folder and execute 'make build'
       - name: Build the application
@@ -94,9 +95,4 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         timeout-minutes: 1
-      # build docker file
-      - name: # build dokcer file
-        run: |
-            cd module4_task1
-            make build-docker
 ...
