@@ -11,7 +11,7 @@ working website.
 `Note for non-git users` at the
 [Step 3](https://docs.edg.io/guides/sites_frameworks/getting_started/hugo).
 - The website is expected to be generated into ./dist folder but this folder
-should be **absent** from the repo.
+should be **absent** from the repositry.
 
 ## Lifecycle
 
