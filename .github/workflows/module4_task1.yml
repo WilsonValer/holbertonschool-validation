@@ -42,13 +42,13 @@ jobs:
 
 
       # build docker file
-      - name: build dokcer file
-        run: |
-            cd module4_task1
-            make build-docker
-            docker run --rm -v $(pwd):/app awesome:build make clean
-            docker run --rm -v $(pwd):/app awesome:build make lint
-            docker run --rm -v $(pwd):/app awesome:build make build
+      # - name: build dokcer file
+      #  run: |
+      #      cd module4_task1
+      #      make build-docker
+      #      docker run --rm -v $(pwd):/app awesome:build make clean
+      #      docker run --rm -v $(pwd):/app awesome:build make lint
+      #      docker run --rm -v $(pwd):/app awesome:build make build
 
 
       # Go to the right folder and execute 'make build'
@@ -81,7 +81,7 @@ jobs:
           files: |
             module4_task1/awesome-website.zip
             module4_task1/DEPLOY.md
-            #    body_path: module3_task3/DEPLOY.md
+      #    body_path: module3_task3/DEPLOY.md
 
       # Deploy a new site on Netlify
       # - name: Deploy to Netlify
