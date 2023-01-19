@@ -1,23 +1,24 @@
 ---
-# Earlier Feedback with Continuous Delivery
+# Safer Collaboration with Pull Requests
 
 name: module4_task1
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or once per day at midnight
+  # Triggers of the workflow
   push:
-    # branches: [master]
-    branches: [master]
+    branches: [master, main]
+    # paths:
+    # - 'module4_task1/**'
     tags:
-      - 'v*.*.*'
+      - '*.*.*'
   schedule:
     - cron: '0 0 * * *'
 
   pull_request:
     types: [opened, reopened, edited, ready_for_review]
 
-# Jobs has five steps
+# Jobs has eight steps
 jobs:
   # This workflow contains a single job called "build"
   build:
@@ -31,71 +32,20 @@ jobs:
       - name: Clone the repository
         uses: actions/checkout@v3
 
-      # Ensure all the required tools are installed prior to any make target
-      - name: Execute the script setup.sh
-        run: |
-          cd module4_task1/
-          ./setup.sh
-      # Check syntax on markdown files
-      # - name: Run markdownlint on markdown files
-      #  run: make lint -C module4_task1/
+      # Execute the setup.sh file
+      - name: Execute the setup.sh file
+        working-directory: module4_task1
+        run: ./setup.sh
 
-
-      # build docker file
-      - name: build dokcer file
+      # Spin up a docker container and execute makefile targets
+      - name: Create a docker image
+        working-directory: module4_task1
         run: |
-          cd module4_task1
           make build-docker
-      - name: test amke
-        run: |
-          docker run -i "awesome:build" make -C module4_task1 clean build lint \
-          unit-tests integration-tests
-
-      # Go to the right folder and execute 'make build'
-      #  - name: Build the application
-      # run: make build -C module4_task1/
-
-      # Produce a zip file containing the dist folder
-      # - name: Archive the dist folder inside a zip file
-      #   run: make package -C module4_task1/
-
-      # Additional steps form past module
-      #- name: Run additional make rules
-      # run: |
-      #   make unit-tests -C module4_task1/
-      #   make integration-tests -C module4_task1/
-      #   make validate -C module4_task1/
-      # Archive the zip file as artifact
-      #- name: Archive code coverage results
-      # uses: actions/upload-artifact@v3
-      # with:
-      #   name: Archive awesome-website.zip as artifact
-      #   path: |
-      #      module4_task1/awesome-website.zip
-      #      module4_task1/DEPLOY.md
-      # create a Release
-      #- name: Release
-      #  uses: softprops/action-gh-release@v1
-      #  if: startsWith(github.ref, 'refs/tags/')
-      #  with:
-      #    files: |
-      #      module4_task1/awesome-website.zip
-      #      module4_task1/DEPLOY.md
-      #    body_path: module3_task3/DEPLOY.md
-
-      # Deploy a new site on Netlify
-      # - name: Deploy to Netlify
-      # uses: nwtgck/actions-netlify@v1.2
-      #  with:
-      #  publish-dir: 'module4_task1/dist'
-      #   production-branch: master
-      #   github-token: ${{ secrets.REPO_TOKEN }}
-      #   deploy-message: "Deploy from GitHub Actions"
-      #   enable-pull-request-comment: true
-      #   enable-commit-comment: true
-      #   overwrites-pull-request-comment: true
-      # env:
-      #   NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-      #   NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-      # timeout-minutes: 1
-...
+          docker run --rm -v $(pwd):/app awesome:build make clean
+          docker run --rm -v $(pwd):/app awesome:build make lint
+          docker run --rm -v $(pwd):/app awesome:build make build
+          docker run --rm -v $(pwd):/app awesome:build make unit-tests
+          docker run --rm -v $(pwd):/app awesome:build make integration-tests
+          ls -la
+          docker images
