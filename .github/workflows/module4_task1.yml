@@ -37,8 +37,8 @@ jobs:
           cd module4_task1/
           ./setup.sh
       # Check syntax on markdown files
-      - name: Run markdownlint on markdown files
-        run: make lint -C module4_task1/
+      # - name: Run markdownlint on markdown files
+      #  run: make lint -C module4_task1/
 
 
       # build docker file
@@ -46,7 +46,9 @@ jobs:
         run: |
             cd module4_task1
             make build-docker
-            docker run -d -p8080 awesome:build
+            docker run --rm -v $(pwd):/app awesome:build make clean
+            docker run --rm -v $(pwd):/app awesome:build make lint
+            docker run --rm -v $(pwd):/app awesome:build make build
 
       # Go to the right folder and execute 'make build'
       - name: Build the application
