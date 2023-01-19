@@ -1,5 +1,6 @@
 # Implement the next steps for the actual Go-Hugo website's source code
 build: ## Generate the website from markdown and config files in the 'dist/' folder
+	@apt install ./hugo.deb
 	@hugo
 	@touch awesome-api
 clean: ## Cleanup the content of the 'dist/' folder
@@ -19,6 +20,10 @@ build-docker: ## Define a docekr image
 	@docker build -t awesome:build -f ./build/Dockerfile .
 
 lint: ## Check markdown files for any syntax mistake
+	@apt install curl -y
+	@curl --silent --location https://deb.nodesource.com/setup_16.x | bash -
+	@apt install nodejs -y
+	@npm install -g markdownlint-cli 1>&2
 	@markdownlint README.md DEPLOY.md
 
 unit-tests: ## Run unit-tets of the project
