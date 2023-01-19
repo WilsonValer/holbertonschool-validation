@@ -50,6 +50,7 @@ jobs:
             docker run --rm -v $(pwd):/app awesome:build make lint
             docker run --rm -v $(pwd):/app awesome:build make build
 
+
       # Go to the right folder and execute 'make build'
       - name: Build the application
         run: make build -C module4_task1/
@@ -83,18 +84,18 @@ jobs:
             #    body_path: module3_task3/DEPLOY.md
 
       # Deploy a new site on Netlify
-      - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v1.2
-        with:
-          publish-dir: 'module4_task1/dist'
-          production-branch: master
-          github-token: ${{ secrets.REPO_TOKEN }}
-          deploy-message: "Deploy from GitHub Actions"
-          enable-pull-request-comment: true
-          enable-commit-comment: true
-          overwrites-pull-request-comment: true
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        timeout-minutes: 1
+      # - name: Deploy to Netlify
+      # uses: nwtgck/actions-netlify@v1.2
+      #  with:
+      #  publish-dir: 'module4_task1/dist'
+      #   production-branch: master
+      #   github-token: ${{ secrets.REPO_TOKEN }}
+      #   deploy-message: "Deploy from GitHub Actions"
+      #   enable-pull-request-comment: true
+      #   enable-commit-comment: true
+      #   overwrites-pull-request-comment: true
+      # env:
+      #   NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      #   NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      # timeout-minutes: 1
 ...
