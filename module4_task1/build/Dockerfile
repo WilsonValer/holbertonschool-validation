@@ -1,5 +1,9 @@
 # Container image that runs your code
 FROM golang:1.15.8-buster
+
+WORKDIR /app
+COPY . /app
+
 RUN apt update
 RUN apt install git
 RUN git clone https://github.com/WilsonValer/holbertonschool-validation.git
