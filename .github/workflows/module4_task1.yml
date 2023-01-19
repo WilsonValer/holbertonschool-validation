@@ -48,7 +48,7 @@ jobs:
           make build-docker
       - name: test amke
         run: |
-          docker run -i "awesome:build" make -C module4_task1 clean build \
+          docker run -i "awesome:build" make -C module4_task1 clean build lint \
           unit-tests integration-tests
 
       # Go to the right folder and execute 'make build'
