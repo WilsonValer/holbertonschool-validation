@@ -1,0 +1,23 @@
+schemaVersion: 2.0.0
+metadataTest:
+  env:
+    - key: YOUR_ENV_VAR
+      value: SOME VALUE
+  labels:
+    - key: 'org.node.version'
+      value: '14'
+    - key: 'org.your.key'
+      value: 'your_value'
+fileExistenceTests:
+  - name: 'Root'
+    path: '/'
+    shouldExist: true
+commandTests:
+  - name: "Check that java is working"
+    command: "which"
+    args: ["java"]
+    expectedOutput: ['/opt/java/openjdk/bin/java\n']
+fileExistenceTests:
+  - name: "Validate Plugins"
+    path: "/usr/share/jenkins/ref/plugins.txt"
+    shouldExist: true
